@@ -55,18 +55,18 @@ namespace CSharpLib
 
     public class VehicleWeightCalculator
     {
-        public static int GetTotalWeight(object vehicle)
+        public static (int weight,Result result) GetTotalWeight(object vehicle)
         {
             switch (vehicle)
             {
                 case Car car:
-                    return car.Weight + car.Driver.Weight + car.Passengers.Sum(p => p.Weight);
+                    return (car.Weight + car.Driver.Weight + car.Passengers.Sum(p => p.Weight), Result.Success);
                 case SportsCar sc:
-                    return sc.Weight + sc.Driver.Weight + sc.Passenger.Weight;
+                    return (sc.Weight + sc.Driver.Weight + sc.Passenger.Weight, Result.Success);
                 case Bike b:
-                    return b.Weight + b.Rider.Weight;
+                    return (b.Weight + b.Rider.Weight, Result.Success);
                 case var x:
-                    throw new NotImplementedException($"dont know how to calculate weight of {x.GetType().Name}");
+                    return (0, Result.Failure($"dont know how to calculate weight of {x.GetType().Name}"));
             }
         }
     }
