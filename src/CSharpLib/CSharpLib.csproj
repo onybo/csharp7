@@ -43,7 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LocalFunctions.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="ServiceFacade.cs" />
+    <Compile Include="VehicleWeightCalculator1.cs" />
+    <Compile Include="VehicleWeightCalculator2.cs" />
+    <Compile Include="VehicleWeightCalculator3.cs" />
     <Compile Include="Vehicles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
