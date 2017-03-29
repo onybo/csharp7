@@ -13,7 +13,7 @@ namespace CSharpLib
             Weight = weight;
         }
 
-        public int Weight { get; private set; }
+        public int Weight { get; internal set; }
         public string Name { get; internal set; }
     };
 

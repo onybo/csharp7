@@ -8,24 +8,14 @@ namespace CSharpLib
 {
     public class LocalFunctions
     {
-        public static int GetTotalWeight(object vehicle)
+        public static void DoPerson(Person person)
         {
-            void Log<T>(int weight)
-            {
-                Console.WriteLine($"vehicletype: {typeof(T).Name}. Weight: {weight}");
-            }
+            if (person == null) throw new ArgumentNullException(nameof(person));
+            Log<Person>(person);
 
-            switch (vehicle)
+            void Log<T>(Person p)
             {
-                case Car car:
-                    Log<Car>(car.Weight);
-                    return car.Weight + car.Driver.Weight + car.Passengers.Sum(p => p.Weight);
-                case SportsCar sc:
-                    return sc.Weight + sc.Driver.Weight + sc.Passenger.Weight;
-                case Bike b when b.Weight > 0:
-                    return b.Weight + b.Rider.Weight;
-                default:
-                    return 0;
+                Console.WriteLine($"vehicletype: {typeof(T).Name}. Weight: {p.Weight}");
             }
         }
 
@@ -48,6 +38,21 @@ namespace CSharpLib
                 .ToList()
                 .ForEach(p => Console.WriteLine(p.Name));
         }
+
+        public static void DoPerson2()
+        {
+            var person = new Person(80);
+            Log();
+            Log();
+            Log();
+
+            void Log()
+            {
+                Console.WriteLine($"Weight: {person.Weight}");
+                person.Weight += 20;                
+            }
+        }
+
 
         public static async Task NamePersonsA()
         {

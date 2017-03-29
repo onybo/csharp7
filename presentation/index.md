@@ -86,6 +86,26 @@ Branching on types in OO?
 
 ---
 
+## Local Functions
+
+--
+
+# Skipping param validation
+
+        public static void DoPerson(Person person)
+        {
+            if (person == null) throw new ArgumentNullException(nameof(person));
+            Log<Person>(person);
+
+            void Log<T>(Person p)
+            {
+                Console.WriteLine($"vehicletype: {typeof(T).Name}. Weight: {p.Weight}");
+            }
+        }
+
+
+---
+
 ## Tuples
 ### When a single result just isn't enough
 

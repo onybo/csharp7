@@ -40,6 +40,22 @@ namespace CSharpLib
         {
             System.Console.WriteLine(typeof(T));
         }
+        
+        public static void TestObjectParam()
+        {
+            ObjectParam((Ape: 10, Tiger: 20));
+        }
+
+        public static void TestStaticType()
+        {
+            PrintStaticType((Ape: 10, Tiger: 20));
+        }
+
+        public static void TestReturnType()
+        {
+            var test = CallService1();
+            PrintStaticType(test);
+        }
 
     }
 }
