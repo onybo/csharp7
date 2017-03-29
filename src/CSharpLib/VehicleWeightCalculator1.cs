@@ -6,9 +6,11 @@ namespace CSharpLib
     {
         public static int GetTotalWeight(object vehicle)
         {
-            if (vehicle is Car c)
+            var c = vehicle as Car;
+            if (c != null)
                 return c.Weight + c.Driver.Weight + c.Passengers.Sum(p => p.Weight);
-            if (vehicle is Bike b)
+            var b = vehicle as Bike;
+            if (b != null)
                 return b.Weight + b.Rider.Weight;
 
             return 0;

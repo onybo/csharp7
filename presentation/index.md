@@ -32,7 +32,24 @@ Example - calculating the weight
 
 --
 
-Is operator
+### Is operator - the old way
+
+        public int GetTotalWeight(object vehicle)
+        {
+            var c = vehicle as Car;
+            if (c != null)
+                return c.Weight + c.Driver.Weight + c.Passengers.Sum(p => p.Weight);
+
+            var b = vehicle as Bike;
+            if (b != null)
+                return b.Weight + b.Rider.Weight;
+
+            return 0;
+        }
+
+--
+
+### Is operator
 
         public int GetTotalWeight(object vehicle)
         {
@@ -46,7 +63,7 @@ Is operator
 
 --
 
-Switch on type
+### Switch on type
 
         public int GetTotalWeight(object vehicle)
         {
@@ -71,6 +88,12 @@ Branching on types in OO?
 
 ## Tuples
 ### When a single result just isn't enough
+
+--
+
+Predefined type 'System.ValueTuple`2' is not defined or imported
+
+add nuget package: System.ValueTuple
 
 --
 Return tuple
@@ -98,7 +121,18 @@ Tuple Deconstruction
             var (val, code) = CallService1();
             Console.WriteLine($"Value is {val}. Code is {code}");
         }
+--
+Only field types matters for overloads
 
+        public static void TupleParam((int code, string mesg) val)
+        {
+            Console.WriteLine(val.Item1 + " : " + val.Item2);
+        }
+
+        public static void TupleParam((string val, string text) val)
+        {
+            Console.WriteLine(val.val + " : " + val.Item2);
+        }
 
 ---
 
